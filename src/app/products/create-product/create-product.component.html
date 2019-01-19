@@ -1,0 +1,45 @@
+<mat-card>
+  <mat-card-content>
+    <p *ngIf="mode">Know of a pet needing home</p>
+  </mat-card-content>
+  <mat-card-content>
+    <p *ngIf="!mode">Edit this pet</p>
+  </mat-card-content>
+  <form (submit)="onCreateProduct(productForm)" #productForm="ngForm">
+    <mat-form-field>
+
+      <input matInput type="text" name="name" [ngModel]="product?.name" placeholder="Name" required #name="ngModel" minlength="3">
+      <mat-error *ngIf="name.invalid">Please enter a pet name, must be at least 3 characters</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="text" name="type" [ngModel]="product?.type" placeholder="Type" required #type="ngModel" minlength="3">
+      <mat-error *ngIf="type.invalid">Type needs to be least 3 characters long</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" name="description" [ngModel]="product?.description" placeholder="Description" required #description="ngModel"
+        minlength="3">
+      <mat-error *ngIf="description.invalid">Description needs to be at least 3 characters </mat-error>
+    </mat-form-field>
+    <p>Skills (optional)</p>
+    <mat-form-field>
+
+      <input matInput type="text" name="skill1" [ngModel]="product?.skill1" placeholder="Skill 1" #skill1="ngModel">
+      <mat-error *ngIf="skill1.invalid">Please enter a valid entry</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" name="skill2" [ngModel]="product?.skill2" placeholder="Skill 2" #skill2="ngModel">
+      <mat-error *ngIf="skill2.invalid">Please enter a valid entry</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" name="skill3" [ngModel]="product?.skill3" placeholder="Skill 3" #skill3="ngModel">
+      <mat-error *ngIf="skill3.invalid">Please enter a valid entry</mat-error>
+    </mat-form-field>
+    <button mat-raised-button type="submit" color="primary"> Add Pet </button>
+    <button mat-raised-button (click)="onFormReset(productForm)" color="accent"> Cancel </button>
+  </form>
+
+</mat-card>
+<div *ngIf='errors.length'>
+  <p *ngFor='let error of errors'>{{error}} </p>
+</div>
