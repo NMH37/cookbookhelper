@@ -1,15 +1,6 @@
-<mat-accordion *ngIf='products.length > 0'>
-  <mat-expansion-panel *ngFor='let product of products'>
-    <mat-expansion-panel-header>
-      {{product?.name}}
-    </mat-expansion-panel-header>
-    <p class='info-text mat-body-1'> Type: </p>{{product?.type}}
-    <mat-action-row>
-      <a mat-button color="primary" [routerLink]="[ product?._id,'edit' ]"> Edit </a>
-    </mat-action-row>
-    <mat-action-row>
-      <a mat-button color="primary" [routerLink]="[product?._id]"> Detail </a>
-    </mat-action-row>
-  </mat-expansion-panel>
-</mat-accordion>
-<p class='info-text mat-body-1' *ngIf='products.length <= 0'>No Pets Yet</p>
+<p class='info-text mat-body-1' *ngIf='products.length <= 0'>
+  No Recipe Yet</p>
+
+<mat-nav-list>
+  <a mat-list-item [routerLink]="[product?._id]" *ngFor="let product of products"> {{ product?.name }} </a>
+</mat-nav-list>

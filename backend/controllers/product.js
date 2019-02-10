@@ -5,11 +5,11 @@ exports.fetchProducts = (req, res) => {
     .then((documents) => {
       res.status(200).json({
         Products: documents,
-        message: 'Pets Fetched from DB'
+        message: 'Recipes Fetched from DB'
       });
     })
     .catch(() => {
-      res.status(500).json({ message: 'Fetching Pet lists failed !' })
+      res.status(500).json({ message: 'Fetching Recipe lists failed !' })
     });
 }
 exports.createProduct = (req, res) => {
@@ -18,16 +18,16 @@ exports.createProduct = (req, res) => {
     name: req.body.name,
     type: req.body.type,
     description: req.body.description,
-    skill1: req.body.skill1,
-    skill2: req.body.skill2,
-    skill3: req.body.skill3
+    ingredient1: req.body.ingredient1,
+    ingredient2: req.body.ingredient2,
+    ingredient3: req.body.ingredient3
   });
   product.save().then((product) => {
     res.status(201).json(product);
   })
     .catch(error => {
       const errors = Object.keys(error.errors).map(key => error.errors[key].message)
-      res.status(500).json({ message: 'Creating a new Pet failed', errors })
+      res.status(500).json({ message: 'Creating a new Recipe failed', errors })
     });
 }
 
@@ -38,11 +38,11 @@ exports.getOneProduct = (req, res) => {
         res.status(200).json(product);
 
       } else {
-        res.status(401).json({ message: 'Pet not found' })
+        res.status(401).json({ message: 'Recipe not found' })
       }
     })
     .catch(() => {
-      res.status(500).json({ message: 'Fetching Pet failed !' })
+      res.status(500).json({ message: 'Fetching Recipe failed !' })
     });
 }
 
@@ -58,7 +58,7 @@ exports.updateProduct = (req, res) => {
     .catch((error) => {
       const errors = Object.keys(error.errors).map(key => error.errors[key].message)
 
-      res.status(500).json({ message: "Pet can't be updated" }, errors)
+      res.status(500).json({ message: "Recipe can't be updated" }, errors)
     })
 }
 exports.removeProduct = (req, res) => {
@@ -66,14 +66,14 @@ exports.removeProduct = (req, res) => {
     .then((response) => {
       // console.log(response, 'checking delete method')
       if (response.n > 0) {
-        res.status(200).json({ message: 'Pet Adopted' });
+        res.status(200).json({ message: 'Recipe deleted' });
       } else {
-        res.status(401).json({ message: 'Not available anymore, already found a home' })
+        res.status(401).json({ message: 'Not available anymore!' })
       }
 
     })
     .catch(() => {
-      res.status(500).json({ message: 'Adopting is not an available option for this pet !' });
+      res.status(500).json({ message: 'deleting is not an available option for this Recipe !' });
     });
 
 

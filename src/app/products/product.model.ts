@@ -3,8 +3,9 @@ export interface Product {
   name: string;
   type: string;
   description: string;
-  skill1?: string;
-  skill2?: string;
-  skill3?: string;
+  ingredient1?: string;
+  ingredient2?: string;
+  ingredient3?: string;
+  ingredients?: string[];
   likes?: number;
 }

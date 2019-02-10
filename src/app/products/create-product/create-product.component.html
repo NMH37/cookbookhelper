@@ -1,19 +1,19 @@
 <mat-card>
   <mat-card-content>
-    <p *ngIf="mode">Know of a pet needing home</p>
+    <p *ngIf="mode">Add new recipe</p>
   </mat-card-content>
   <mat-card-content>
-    <p *ngIf="!mode">Edit this pet</p>
+    <p *ngIf="!mode">Edit this recipe</p>
   </mat-card-content>
   <form (submit)="onCreateProduct(productForm)" #productForm="ngForm">
     <mat-form-field>
 
       <input matInput type="text" name="name" [ngModel]="product?.name" placeholder="Name" required #name="ngModel" minlength="3">
-      <mat-error *ngIf="name.invalid">Please enter a pet name, must be at least 3 characters</mat-error>
+      <mat-error *ngIf="name.invalid">Please enter a recipe name, must be at least 3 characters</mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput type="text" name="type" [ngModel]="product?.type" placeholder="Type" required #type="ngModel" minlength="3">
+      <input matInput type="text" name="type" [ngModel]="product?.type" placeholder="Image Link" required #type="ngModel" minlength="12">
       <mat-error *ngIf="type.invalid">Type needs to be least 3 characters long</mat-error>
     </mat-form-field>
     <mat-form-field>
@@ -21,21 +21,21 @@
         minlength="3">
       <mat-error *ngIf="description.invalid">Description needs to be at least 3 characters </mat-error>
     </mat-form-field>
-    <p>Skills (optional)</p>
+    <p>Ingredients (optional)</p>
     <mat-form-field>
 
-      <input matInput type="text" name="skill1" [ngModel]="product?.skill1" placeholder="Skill 1" #skill1="ngModel">
-      <mat-error *ngIf="skill1.invalid">Please enter a valid entry</mat-error>
+      <input matInput type="text" name="ingredient1" [ngModel]="product?.ingredient1" placeholder="ingredient 1" #ingredient1="ngModel">
+      <mat-error *ngIf="ingredient1.invalid">Please enter a valid entry</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="text" name="skill2" [ngModel]="product?.skill2" placeholder="Skill 2" #skill2="ngModel">
-      <mat-error *ngIf="skill2.invalid">Please enter a valid entry</mat-error>
+      <input matInput type="text" name="ingredient2" [ngModel]="product?.ingredient2" placeholder="ingredient 2" #ingredient2="ngModel">
+      <mat-error *ngIf="ingredient2.invalid">Please enter a valid entry</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="text" name="skill3" [ngModel]="product?.skill3" placeholder="Skill 3" #skill3="ngModel">
-      <mat-error *ngIf="skill3.invalid">Please enter a valid entry</mat-error>
+      <input matInput type="text" name="ingredient3" [ngModel]="product?.ingredient3" placeholder="ingredient 3" #ingredient3="ngModel">
+      <mat-error *ngIf="ingredient3.invalid">Please enter a valid entry</mat-error>
     </mat-form-field>
-    <button mat-raised-button type="submit" color="primary"> Add Pet </button>
+    <button mat-raised-button type="submit" color="primary"> Add Recipe </button>
     <button mat-raised-button (click)="onFormReset(productForm)" color="accent"> Cancel </button>
   </form>
 

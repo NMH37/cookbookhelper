@@ -1,8 +1,8 @@
+import { NgModel } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ProductsService } from './../../services/products.service';
 import { Product } from './../product.model';
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-details',
@@ -12,32 +12,35 @@ import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 export class DetailsComponent implements OnInit {
   product: Product;
   productId: string;
-  like = false;
+  color = '';
+  like = true;
+  // indg: string[] = [];
   errors: string[] = [];
   likes = 0;
+  ingredients: any[];
+  selecteditems: any[];
+
+  equals(objOne, objTwo) {
+    if (typeof objOne !== 'undefined' && typeof objTwo !== 'undefined') {
+      return objOne.id === objTwo.id;
+    }
+  }
+
+  selectAll(select: NgModel, values, array) {
+    select.update.emit(values);
+  }
+
+  deselectAll(select: NgModel) {
+    select.update.emit([]);
+  }
   constructor(public productService: ProductsService, private route: ActivatedRoute, private router: Router) { }
   onDelete(productId: string) {
     this.productService.deleteProduct(productId);
-    this.router.navigate(['/pets']);
+    this.router.navigate(['/recipes']);
 
   }
-  onLike(productId: string) {
-    this.like = !this.like;
-    if (this.product.likes) {
-      this.product.likes++;
-    } else {
-      this.product.likes = 1;
-    }
-    // this.likes = this.product.likes;
-    this.productService.getProduct(productId).subscribe(productLiked => {
-      this.product.likes = productLiked.likes + 1;
-      productLiked.likes = productLiked.likes + 1;
-      this.productService.updateProduct(productLiked).subscribe(() => this.router.navigateByUrl('/pets/' + productLiked._id),
-        error => {
-          console.log(error);
-          this.errors = error.error.errors;
-        });
-    });
+  onLike() {
+    this.color = 'warn';
   }
   ngOnInit() {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
@@ -46,9 +49,16 @@ export class DetailsComponent implements OnInit {
         this.productService.getProduct(this.productId)
           .subscribe((product: Product) => {
             this.product = product;
-          });
+            this.ingredients = [
+              { id: 1, viewValue: this.product.ingredient1 },
+              { id: 2, viewValue: this.product.ingredient2 },
+              { id: 3, viewValue: this.product.ingredient3 },
+            ];
+          }
+          );
       }
 
     });
   }
+
 }

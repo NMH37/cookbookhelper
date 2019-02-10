@@ -42,13 +42,13 @@ export class CreateProductComponent implements OnInit {
         name: form.value.name,
         type: form.value.type,
         description: form.value.description,
-        skill1: form.value.skill1,
-        skill2: form.value.skill2,
-        skill3: form.value.skill3
+        ingredient1: form.value.ingredient1,
+        ingredient2: form.value.ingredient2,
+        ingredient3: form.value.ingredient3
       };
       console.log(newProduct);
       this.productService.addProduct(newProduct)
-        .subscribe(() => this.router.navigateByUrl('/pets'),
+        .subscribe(() => this.router.navigateByUrl('/recipes'),
           error => {
             console.log(error);
             this.errors = error.error.errors;
@@ -59,11 +59,11 @@ export class CreateProductComponent implements OnInit {
         name: form.value.name,
         type: form.value.type,
         description: form.value.description,
-        skill1: form.value.skill1,
-        skill2: form.value.skill2,
-        skill3: form.value.skill3,
+        ingredient1: form.value.ingredient1,
+        ingredient2: form.value.ingredient2,
+        ingredient3: form.value.ingredient3,
         likes: form.value.likes
-      }).subscribe(() => this.router.navigateByUrl('/pets'),
+      }).subscribe(() => this.router.navigateByUrl('/recipes'),
         error => {
           console.log(error);
           this.errors = error.error.errors;
@@ -74,7 +74,7 @@ export class CreateProductComponent implements OnInit {
   }
   onFormReset(form: NgForm) {
     form.resetForm();
-    this.router.navigateByUrl('/pets');
+    this.router.navigateByUrl('/recipes');
   }
 
 }

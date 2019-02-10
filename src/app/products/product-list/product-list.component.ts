@@ -12,7 +12,6 @@ import { Subscription } from 'rxjs';
 })
 export class ProductListComponent implements OnInit, OnDestroy {
   private productSubs: Subscription;
-  isAllowed = false;
   products: Product[] = [];
   userId: string;
   constructor(public productService: ProductsService) { }

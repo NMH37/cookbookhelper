@@ -11,7 +11,7 @@ const productRoutes = require('./routes/product');
 const app = express();
 
 // connect database
-mongoose.connect('mongodb+srv://nayyer:DW2UkliwVlrAKG18@cluster0-eta6h.mongodb.net/pets?retryWrites=true'
+mongoose.connect('mongodb+srv://nayyer:DW2UkliwVlrAKG18@cluster0-eta6h.mongodb.net/recipe?retryWrites=true'
   , {
     useCreateIndex: true,
     useNewUrlParser: true,
@@ -20,7 +20,7 @@ mongoose.connect('mongodb+srv://nayyer:DW2UkliwVlrAKG18@cluster0-eta6h.mongodb.n
   .catch(() => console.log("errors occured"));
 
 
-app.use('/api/pets', (req, res, next) => {
+app.use('/api/recipes', (req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Headers",
     "Accept, Content-Type, X-Requested-With, Authorization ,Origin");
@@ -30,11 +30,11 @@ app.use('/api/pets', (req, res, next) => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/", express.static(path.join(__dirname, "angular")));
-app.use("/api/pets", productRoutes);
-app.use((req, res, next) => {
+// app.use("/", express.static(path.join(__dirname, "angular")));
+app.use("/api/recipes", productRoutes);
+/* app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, 'angular', 'index.html'));
-});
+}); */
 
 
 app.listen(port, () => console.log(`listening on port ${port}`));

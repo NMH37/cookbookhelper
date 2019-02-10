@@ -1,21 +1,24 @@
 <mat-card class="detail-card">
   <mat-card-header>
-    <mat-card-title>Details about {{product?.name}}</mat-card-title>
-    <mat-card-subtitle>Type {{product?.type}}</mat-card-subtitle>
+    <mat-card-title>{{product?.name}}</mat-card-title>
+    <button mat-icon-button (click)="onLike()" [color]="color">
+      <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+    </button>
   </mat-card-header>
-  <mat-card-content>
-    <p> Description :{{product?.description}}</p>
-  </mat-card-content>
-  <mat-card-content>Skills:</mat-card-content>
-  <p *ngIf="product?.skill1" class='info-text mat-body-1'> {{product?.skill1}}</p>
-  <p *ngIf="product?.skill2" class='info-text mat-body-1'> {{product?.skill2}}</p>
-  <p *ngIf="product?.skill3" class='info-text mat-body-1'> {{product?.skill3}} </p>
-  <p *ngIf="product?.likes">Likes : {{product?.likes}}</p>
-
-  <mat-card-actions>
-    <button mat-button (click)="onDelete(product?._id)" color="accent">Adopt this pet</button>
-    <button mat-raised-button [disabled]="like" (click)="onLike(product?._id)" color="primary">Like this pet</button>
-  </mat-card-actions>
+  <img mat-card-image [attr.src]="product?.type" alt="Photo of a White Bread">
+  <mat-list-item class="primary-imenu-item" role="listitem">
+    <mat-form-field class="select-form">
+      <mat-select placeholder="Ingredients" name="item" class="filter-select" [(ngModel)]="selecteditems" [compareWith]="equals"
+        multiple #itemSelect="ngModel">
+        <button mat-raised-button class="mat-primary fill text-sm" (click)="selectAll(itemSelect, ingredients)">
+          Select All
+        </button>
+        <mat-option *ngFor="let item of ingredients" [value]="item">
+          {{item.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-list-item>
   <div *ngIf='errors.length'>
     <p *ngFor='let error of errors'>{{error}} </p>
   </div>

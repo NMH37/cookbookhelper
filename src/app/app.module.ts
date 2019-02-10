@@ -1,5 +1,5 @@
 import { AngularMaterialModule } from './angular-material.module';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -32,7 +32,8 @@ import { DetailsComponent } from './products/details/details.component';
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    FlexLayoutModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
