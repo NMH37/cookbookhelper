@@ -30,14 +30,14 @@ app.use('/api/recipes', (req, res, next) => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use("/", express.static(path.join(__dirname, "angular")));
+app.use("/", express.static(path.join(__dirname, "angular")));
 app.use("/api/recipes", productRoutes);
-/* app.use((req, res, next) => {
+app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, 'angular', 'index.html'));
-}); */
+});
 
 
 app.listen(port, () => console.log(`listening on port ${port}`));
 
 
-// mongodb://localhost:27017/pet-shelter
+

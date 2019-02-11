@@ -26,7 +26,7 @@ export class DetailsComponent implements OnInit {
     }
   }
 
-  selectAll(select: NgModel, values, array) {
+  selectAll(select: NgModel, values) {
     select.update.emit(values);
   }
 

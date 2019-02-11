@@ -5,7 +5,7 @@
       <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
     </button>
   </mat-card-header>
-  <img mat-card-image [attr.src]="product?.type" alt="Photo of a White Bread">
+  <img mat-card-image [attr.src]="product?.type" [alt]="product?.name">
   <mat-list-item class="primary-imenu-item" role="listitem">
     <mat-form-field class="select-form">
       <mat-select placeholder="Ingredients" name="item" class="filter-select" [(ngModel)]="selecteditems" [compareWith]="equals"
