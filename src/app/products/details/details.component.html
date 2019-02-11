@@ -13,6 +13,9 @@
         <button mat-raised-button class="mat-primary fill text-sm" (click)="selectAll(itemSelect, ingredients)">
           Select All
         </button>
+        <!--       <mat-checkbox class="select" class="mat-primary fill text-sm" (click)="selectAll(itemSelect, ingredients)">
+          Select All </mat-checkbox> -->
+
         <mat-option *ngFor="let item of ingredients" [value]="item">
           {{item.viewValue}}
         </mat-option>

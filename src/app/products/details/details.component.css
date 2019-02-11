@@ -4,3 +4,21 @@
 mat-card {
   max-width: 100%
 }
+button.mat-icon-button.mat-warn:after {
+  position: relative;
+  display: block;
+  left: -5px;
+  content: "I love it!";
+  font-size: .8rem;
+  top: -20px;
+}
+.mat-icon-button {
+  position: absolute;
+    right: 0;
+    top: 7px;
+}
+.select{
+  position: absolute;
+  right: 20;
+
+}

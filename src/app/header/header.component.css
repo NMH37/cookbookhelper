@@ -14,5 +14,9 @@ ul {
 }
 mat-card-header {
   padding: 1rem;
+  text-align: center;
+  display: block;
 }
-
+.header {
+  font-weight: 900;
+}
